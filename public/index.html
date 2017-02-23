@@ -1,76 +1,40 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
+    <script  src="http://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <title>Concurso Mi Mascota</title>
-    <style media="screen">
-      body {
-        font-family: Roboto, Arial, sans-serif;
-        background: #ECEFF1;
-        color: rgba(0,0,0,0.87);
-      }
-
-      a {
-        color: rgb(3,155,229);
-      }
-
-      #message {
-        max-width: 400px;
-        margin: 40px auto;
-        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2),0 1px 1px 0 rgba(0,0,0,0.14),0 2px 1px -1px rgba(0,0,0,0.12);
-        border-radius: 2px;
-        background: white;
-        padding: 16px 24px;
-      }
-
-      #message h1 {
-        font-size: 22px;
-        font-weight: 500;
-        text-align: center;
-        margin: 0 0 16px;
-      }
-
-      #message p {
-        font-weight: 300;
-        line-height: 150%;
-      }
-
-      #message ul {
-        list-style: none;
-        margin: 16px 0 0;
-        padding: 0;
-        text-align: center;
-      }
-
-      #message li a {
-        display: inline-block;
-        padding: 8px;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-weight: 500;
-        background: rgb(3,155,229);
-        color: white;
-        border: 1px solid rgb(3,155,229);
-        border-radius: 3px;
-        font-size: 14px;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-      }
-    </style>
+    <!--Material Design Lite-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!--Color Scheme-->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-lime.min.css" />
+    <!--Estilizacion-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" >
+    <link rel="stylesheet" href="main.css">
+    
   </head>
   <body>
+  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <!--Seccion del encabezado de la pagina-->
+    <header class="mdl-layout__header mdl-color-text--white mdl-color--green-700">
+      <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+          <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <h3><i class="material-icons md-48">pets</i>    Concurso Mi Mascota</h3>
+          </div>
+      </div>
+    </header>
+    <div class="container">
+      <input id="txtEmail" type="email" placeholder="Email">
+      <input id="txtPassword" type="password" placeholder="Password">
+      <button id="btnLogIn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Log In</button>
+      <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
+      <button hidden id="btnLogOut" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hide ">Log Out
+      </button>
+    </div>
 
-      <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
-      <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyCyAQ2JD7M7FsGOtU8AqgZdjR3tzS28Yic",
-          authDomain: "concurso-mi-mascota-b4365.firebaseapp.com",
-          databaseURL: "https://concurso-mi-mascota-b4365.firebaseio.com",
-          storageBucket: "concurso-mi-mascota-b4365.appspot.com",
-          messagingSenderId: "493216292048"
-        };
-        firebase.initializeApp(config);
-      </script>
-   
+  <!--para aplicar los scripts que estan en app.js-->
+  <script src="app.js"></script>
+
   </body>
 </html>
