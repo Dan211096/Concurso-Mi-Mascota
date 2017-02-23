@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="main.css">
     
   </head>
-  <body>
+  <body class="mdl-body mld-js-body mdl-color--green-400" style="text-align: center; vertical-align: ">
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <!--Seccion del encabezado de la pagina-->
     <header class="mdl-layout__header mdl-color-text--white mdl-color--green-700">
@@ -22,19 +22,37 @@
           <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
             <h3><i class="material-icons md-48">pets</i>    Concurso Mi Mascota</h3>
           </div>
+          <div class="user-container">
+            <input id="txtEmail" type="email" placeholder="Email">
+            <input id="txtPassword" type="password" placeholder="Password">
+            <button href="/participa.html" id="btnLogIn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Log In</button>
+            <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
+            <button hidden id="btnLogOut" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hide " >Log Out
+          </button>
+        </div>
       </div>
+      
     </header>
-    <div class="container">
-      <input id="txtEmail" type="email" placeholder="Email">
-      <input id="txtPassword" type="password" placeholder="Password">
-      <button id="btnLogIn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Log In</button>
-      <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
-      <button hidden id="btnLogOut" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hide ">Log Out
-      </button>
-    </div>
-
-  <!--para aplicar los scripts que estan en app.js-->
-  <script src="app.js"></script>
+    
+      <div style="position: absolute; /*para centrar el div*/
+                  /*nos posicionamos en el centro del navegador*/
+                  top:50%;
+                  left:50%;
+                  /*determinamos una anchura*/
+                  width:400px;
+                  /*indicamos que el margen izquierdo, es la mitad de la anchura*/
+                  margin-left:-200px;
+                  /*determinamos una altura*/
+                  height:300px;
+                  /*indicamos que el margen superior, es la mitad de la altura*/
+                  margin-top:-150px;
+                  padding:5px;">
+        <h4> Bienvenido! Si desea participar en nuestro concurso, presione el bot&oacuten de abajo </h4>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../participa.html'"> Participar </button>
+      </div>
+    
+    <!--para aplicar los scripts que estan en app.js-->
+    <script src="app.js"></script>
 
   </body>
 </html>

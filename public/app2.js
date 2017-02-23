@@ -56,7 +56,8 @@
 		  		txtPassword.setAttribute('hidden', 'true');
 		  		txtEmail.value='';
 		  		txtEmail.setAttribute('hidden', 'true');
-		  		window.location.href='../admin.html';
+
+		  		
 		  	} else{
 		  		console.log('not logged in');
 		  		btnLogIn.removeAttribute('hidden');
@@ -64,6 +65,7 @@
 		  		btnLogOut.setAttribute('hidden', 'true');
 		  		txtEmail.removeAttribute('hidden');
 		  		txtPassword.removeAttribute('hidden');
+		 		window.location.href='../index.html';
 		  	}
 	    });
 
