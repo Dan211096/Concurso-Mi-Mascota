@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!--Script para el funcionamiento de firebase -->
     <script  src="http://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-    <title>Concurso Mi Mascota</title>
+    <title>Concurso Mi Mascota. Administraci&oacuten</title>
     <!--Material Design Lite-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -12,31 +13,39 @@
     <!--Estilizacion-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" >
     <link rel="stylesheet" href="main.css">
-    
   </head>
-  <body class="mdl-body mld-js-body mdl-color--green-400" style="text-align: center">
+
+
+  <body class="mdl-body mld-js-body mdl-color--green-300" style="text-align: center">
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <!--Seccion del encabezado de la pagina-->
     <header class="mdl-layout__header mdl-color-text--white mdl-color--green-700">
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
           <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <!--Muestra el nombre y logo de la pagina -->
             <h3><i class="material-icons md-48">pets</i>    Concurso Mi Mascota</h3>
           </div>
+          <!--Campos necesarios para inicio de sesion, creacion de usuarios y salida de sesion-->
           <div class="user-container">
+            <!--Para ingresar correo y contraseña. Invisible al inicio ya que si llego a la pagina, se supone que inicio sesion-->
             <input hidden id="txtEmail" type="email" placeholder="Email">
             <input hidden id="txtPassword" type="password" placeholder="Password">
+            <!--Para iniciar sesion-->
             <button hidden id="btnLogIn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Log In</button>
+            <!--Para crear usuario-->
             <button hidden id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
-            <button id="btnLogOut" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hide " >Log Out
-          </button>
-      </div>
+            <!--Para cerrar sesion-->
+            <button id="btnLogOut" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hide " >Log Out</button>
+          </div>
+        </div>
       
     </header>
     <p> a</p>
+  </div>
 
    
-    <!--para aplicar los scripts que estan en app.js-->
-   <script src="app2.js"></script>
+    <!--para aplicar los scripts que estan en appAdmin.js-->
+   <script src="appAdmin.js"></script>
 
   </body>
 </html>

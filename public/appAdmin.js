@@ -9,16 +9,16 @@
 		};
 		firebase.initializeApp(config);
 
-		//tomo los elementos
-		//campo del correo
+		//tomo los elementos 
+		//camp de texto donde se ingresa el correo
 		const txtEmail=document.getElementById('txtEmail');
-		//campo de la contraseña
+		//campo de texto donde se ingresa la contraseña
 		const txtPassword=document.getElementById('txtPassword');
 		//boton de inicio de sesion
 		const btnLogIn=document.getElementById('btnLogIn');
-		//boton para crear usuario
+		//boton de crear usuario
 		const btnSignUp=document.getElementById('btnSignUp');
-		//boton para cerrar sesion
+		//boton de cierre de sesion
 	 	const btnLogOut=document.getElementById('btnLogOut');
 
 	  	//evento para iniciar sesion
@@ -46,17 +46,18 @@
 		  	promesa.catch (e=> console.log(e.message));
 		});
 
-	    //evento para cerrar sesion
+	    //Evento para cerrar sesion
 	    btnLogOut.addEventListener('click', e=>{
+	    	//cierro sesion
 	  		firebase.auth().signOut();
 	    })
 
 	    //listener para la autentificacion. para verificar si inicio sesion
 	    firebase.auth().onAuthStateChanged(firebaseUser =>{
 	  		if (firebaseUser){
-	  			//se muestra el usuario para pruebas
+	  			//se imprime el usuario para pruebas
 	  			console.log(firebaseUser);
-	  			//se muestran y ocultan los elementos necesarios
+	  			//se ocultan y muestran los elementos necesarios
 		  		btnLogIn.setAttribute('hidden', 'true');
 		  		btnSignUp.setAttribute('hidden', 'true');
 		  		btnLogOut.removeAttribute('hidden');
@@ -64,16 +65,19 @@
 		  		txtPassword.setAttribute('hidden', 'true');
 		  		txtEmail.value='';
 		  		txtEmail.setAttribute('hidden', 'true');
-		  		//se redirige a la pagina de admin si inicio sesion';
+
+		  		
 		  	} else{
-		  		//se muestra un mensaje para preubas
+		  		//se imprime un mensaje para prueba
 		  		console.log('not logged in');
-		  		//se muestran y ocultan elementos
+		  		//se ocultan y muestran los elementos necesarios
 		  		btnLogIn.removeAttribute('hidden');
 		  		btnSignUp.removeAttribute('hidden');
 		  		btnLogOut.setAttribute('hidden', 'true');
 		  		txtEmail.removeAttribute('hidden');
 		  		txtPassword.removeAttribute('hidden');
+		  		//se redirige a la pagina principal. Si ya no esta logeado, no puede seguir en las paginas de administrador
+		 		window.location.href='../index.html';
 		  	}
 	    });
 

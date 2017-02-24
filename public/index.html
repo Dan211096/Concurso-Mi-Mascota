@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Script para el funcionamiento de firebase -->
     <script  src="http://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <!--titulo de la pagina -->
     <title>Concurso Mi Mascota</title>
     <!--Material Design Lite-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -12,42 +14,38 @@
     <!--Estilizacion-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" >
     <link rel="stylesheet" href="main.css">
-    
   </head>
-  <body class="mdl-body mld-js-body mdl-color--green-400" style="text-align: center; vertical-align: ">
+
+
+  <body class="mdl-body mld-js-body mdl-color--green-300" style="text-align: center; vertical-align: ">
+
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <!--Seccion del encabezado de la pagina-->
     <header class="mdl-layout__header mdl-color-text--white mdl-color--green-700">
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
           <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <!--Logo (icono de material design) y nombre de la pagina -->
             <h3><i class="material-icons md-48">pets</i>    Concurso Mi Mascota</h3>
           </div>
+          <!--division para iniciar sesion, crear usuario y salir -->
           <div class="user-container">
+            <!--cuadros de texto para ingresar las credenciales -->
             <input id="txtEmail" type="email" placeholder="Email">
             <input id="txtPassword" type="password" placeholder="Password">
+            <!--Boton de inicio de sesion -->
             <button href="/participa.html" id="btnLogIn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Log In</button>
+            <!--Boton para crear usuario -->
             <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
-            <button hidden id="btnLogOut" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hide " >Log Out
-          </button>
+            <!--Boton para cerrar sesion, oculto ya que solo se debe mostrar si ya se inicio sesion -->
+            <button hidden id="btnLogOut" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hide " >Log Out </button>
+          </div>
         </div>
-      </div>
       
     </header>
-    
-      <div style="position: absolute; /*para centrar el div*/
-                  /*nos posicionamos en el centro del navegador*/
-                  top:50%;
-                  left:50%;
-                  /*determinamos una anchura*/
-                  width:400px;
-                  /*indicamos que el margen izquierdo, es la mitad de la anchura*/
-                  margin-left:-200px;
-                  /*determinamos una altura*/
-                  height:300px;
-                  /*indicamos que el margen superior, es la mitad de la altura*/
-                  margin-top:-150px;
-                  padding:5px;">
+      <!-- Mensaje de bienvenida-->
+      <div class="mensajeP"> 
         <h4> Bienvenido! Si desea participar en nuestro concurso, presione el bot&oacuten de abajo </h4>
+        <!--boton para ir a crear una entrada del concurso -->
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../participa.html'"> Participar </button>
       </div>
     

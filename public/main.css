@@ -1,116 +1,34 @@
 
-
+/*para establecer las fonts a usar*/
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
-main, #messages-card {
-  height: 100%;
-  padding-bottom: 0;
-}
-#messages-card-container {
-  height: calc(100% - 150px);
-  padding-bottom: 0;
-}
-#messages-card {
-  margin-top: 15px;
-}
+
+/*Material design para el header*/
 .mdl-layout__header-row span {
   margin-left: 15px;
   margin-top: 17px;
 }
+
+/*Material design para el grid*/
 .mdl-grid {
   max-width: 1024px;
   margin: auto;
 }
+/*vista basica de los iconos de material design*/
 .material-icons {
   font-size: 36px;
   top: 8px;
   position: relative;
 }
+
+/*Material design para el header*/
 .mdl-layout__header-row {
   padding: 0;
   margin: 0 auto;
 }
-.mdl-card__supporting-text {
-  width: auto;
-  height: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-#messages {
-  overflow-y: auto;
-  margin-bottom: 10px;
-  height: calc(100% - 80px);
-}
-#message-filler {
-  flex-grow: 1;
-}
-.message-container:first-of-type {
-  border-top-width: 0;
-}
-.message-container {
-  display: block;
-  margin-top: 10px;
-  border-top: 1px solid #f3f3f3;
-  padding-top: 10px;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-.message-container.visible {
-  opacity: 1;
-}
-.message-container .pic {
-  background-image: url('/images/profile_placeholder.png');
-  background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
-  background-size: 30px;
-  border-radius: 20px;
-}
-.message-container .spacing {
-  display: table-cell;
-  vertical-align: top;
-}
-.message-container .message {
-  display: table-cell;
-  width: calc(100% - 40px);
-  padding: 5px 0 5px 10px;
-}
-.message-container .name {
-  display: inline-block;
-  width: 100%;
-  padding-left: 40px;
-  color: #bbb;
-  font-style: italic;
-  font-size: 12px;
-  box-sizing: border-box;
-}
-#message-form {
-  display: flex;
-  flex-direction: row;
-  width: calc(100% - 48px);
-  float: left;
-}
-#image-form {
-  display: flex;
-  flex-direction: row;
-  width: 48px;
-  float: right;
-}
-#message-form .mdl-textfield {
-  width: calc(100% - 100px);
-}
-#message-form button, #image-form button {
-  width: 100px;
-  margin: 15px 0 0 10px;
-}
-.mdl-card {
-  min-height: 0;
-}
-.mdl-card {
-  background: linear-gradient(white, #f9f9f9);
-  justify-content: space-between;
-}
+
+/*informacion referente del container llamado user-container*/
 #user-container {
   position: absolute;
   display: flex;
@@ -122,43 +40,13 @@ main, #messages-card {
   justify-content: flex-end;
   padding-right: 10px;
 }
-#user-container #user-pic {
-  top: -3px;
-  position: relative;
-  display: inline-block;
-  background-image: url('/images/profile_placeholder.png');
-  background-repeat: no-repeat;
-  width: 40px;
-  height: 40px;
-  background-size: 40px;
-  border-radius: 20px;
-}
-#user-container #user-name {
-  font-size: 16px;
-  line-height: 36px;
-  padding-right: 10px;
-  padding-left: 20px;
-}
-#image-form #submitImage {
-  width: auto;
-  padding: 0 6px 0 1px;
-  min-width: 0;
-}
-#image-form #submitImage .material-icons {
-  top: -1px;
-}
-.message img {
-  max-width: 300px;
-  max-height: 200px;
-}
-#mediaCapture {
-  display: none;
-}
+
 @media screen and (max-width: 610px) {
   header {
     height: 113px;
     padding-bottom: 80px !important;
   }
+
   #user-container {
     top: 72px;
     background-color: rgb(3,155,229);
@@ -167,12 +55,18 @@ main, #messages-card {
     padding-right: 2px;
   }
 }
+
+/*Material design para los label*/
 .mdl-textfield__label:after {
   background-color: #0288D1;
 }
+
+/*Material design para los label cunado estan seleccionados*/
 .mdl-textfield--floating-label.is-focused .mdl-textfield__label {
   color: #0288D1;
 }
+
+/*Material design para los botones*/
 .mdl-button .material-icons {
   top: -1px;
   margin-right: 5px;
@@ -193,56 +87,153 @@ main, #messages-card {
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
+/*Informacion para que el mensaje de saludo en la pagina principal este centrado*/
+.mensajeP {
+  position: absolute; /*para centrar el div*/
+  /*nos posicionamos en el centro del navegador*/
+  top:50%;
+  left:50%;
+  /*determinamos una anchura*/
+  width:800px;
+  /*indicamos que el margen izquierdo, es la mitad de la anchura*/
+  margin-left:-400px;
+  /*determinamos una altura*/
+  height:300px;
+  /*indicamos que el margen superior, es la mitad de la altura*/
+  margin-top:-150px;
+  padding:5px;
+}
 
+/*Informacion sobre los formularios*/
+.formulario{
+  max-width: 500px;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  margin: 10px auto;
+  padding: 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
 
-      body {
-        font-family: Roboto, Arial, sans-serif;
-        background: #ECEFF1;
-        color: rgba(0,0,0,0.87);
-      }
+/*Informacion sobre los fieldsets de los formularios*/
+.formulario fieldset{
+    border: none;
+}
 
-      a {
-        color: rgb(3,155,229);
-      }
+/*Informacion sobre la leyenda de los formularios*/
+.formulario legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
 
-      #message {
-        max-width: 400px;
-        margin: 40px auto;
-        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2),0 1px 1px 0 rgba(0,0,0,0.14),0 2px 1px -1px rgba(0,0,0,0.12);
-        border-radius: 2px;
-        background: white;
-        padding: 16px 24px;
-      }
+/*Informacion sobre los label de los formularios*/
+.formulario label {
+    display: block;
+    margin-bottom: 8px;
+}
 
-      #message h1 {
-        font-size: 22px;
-        font-weight: 500;
-        text-align: center;
-        margin: 0 0 16px;
-      }
+/*Informacion sobre los elementos de los formularios*/
+.formulario input[type="text"],
+.formulario input[type="date"],
+.formulario input[type="datetime"],
+.formulario input[type="email"],
+.formulario input[type="number"],
+.formulario input[type="search"],
+.formulario input[type="time"],
+.formulario input[type="url"],
+.formulario textarea,
+.formulario select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    background-color: #e8eeef;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    
+}
 
-      #message p {
-        font-weight: 300;
-        line-height: 150%;
-      }
+/*Informacion sobre el fondo de los elementos de los formularios cuando estan seleccionados*/
+.formulario input[type="text"]:focus,
+.formulario input[type="date"]:focus,
+.formulario input[type="datetime"]:focus,
+.formulario input[type="email"]:focus,
+.formulario input[type="number"]:focus,
+.formulario input[type="search"]:focus,
+.formulario input[type="time"]:focus,
+.formulario input[type="url"]:focus,
+.formulario textarea:focus,
+.formulario select:focus{
+    background: #d2d9dd;
+}
 
-      #message ul {
-        list-style: none;
-        margin: 16px 0 0;
-        padding: 0;
-        text-align: center;
-      }
+/*Apariencia del select de los formularios*/
+.formulario select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
 
-      #message li a {
-        display: inline-block;
-        padding: 8px;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-weight: 500;
-        background: rgb(3,155,229);
-        color: white;
-        border: 1px solid rgb(3,155,229);
-        border-radius: 3px;
-        font-size: 14px;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-      }
+/*Apariencia del numero del formulario*/
+.formulario .number {
+    background: #008000;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 20px;
+    margin-top:20px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 30px 30px 30px 0px;
+}
+
+/*tamaño de los formularios, que se colocan a la izquierda*/
+.formulario .izquierda {
+  width: 45%;
+  float: left;
+}
+
+/*tamaño de los formularios, que se colocan a la derecha*/
+.formulario .derecha {
+  width:45%;
+  float:right;
+}
+
+/*Apariencia de los botones de los formularios para enviar*/
+.formulario input[type="submit"],
+.formulario input[type="button"]
+{
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #1abc9c;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+
+/*Apariencia de los botones de los formularios*/
+.formulario input[type="submit"]:hover,
+.formulario input[type="button"]:hover
+{
+    background: #109177;
+}

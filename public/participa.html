@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!--script para el funcionamiento de firebase -->
     <script  src="http://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-    <title>Concurso Mi Mascota</title>
+    <title>Concurso Mi Mascota. Participa</title>
     <!--Material Design Lite-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -12,22 +13,60 @@
     <!--Estilizacion-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" >
     <link rel="stylesheet" href="main.css">
-    
   </head>
-  <body class="mdl-body mld-js-body mdl-color--green-400" style="text-align: center">
+
+
+  <body class="mdl-body mld-js-body mdl-color--green-300" style="text-align: center">
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <!--Seccion del encabezado de la pagina-->
     <header class="mdl-layout__header mdl-color-text--white mdl-color--green-700">
       <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
           <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <!--Se muestra el logo (de material design) y nombre de la pagina -->
             <h3><i class="material-icons md-48">pets</i>    Concurso Mi Mascota</h3>
           </div>
-      </div>
-      
+      </div>  
     </header>
     
-    <!--para aplicar los scripts que estan en app.js-->
-    <script src="app.js"></script>
+    <!--Una division que contendra los formularios para ingresar datos -->
+    <div class="formulario">
+      <!--division que contiene el formulario de la izquierda. Informacion del dueño-->
+      <div class="izquierda">
+        <form>
+          <fieldset>
+            <legend><span class="number">1</span> Información del participante</legend>
+            <input id="nombreC" type="text" name="nombreCandidato" placeholder="Nombre">
+            <input id="apellidoC" type="text" name="apellidoCandidato" placeholder="Apellido">
+            <input id="correo" type="email" name="correoCandidato" placeholder="Correo electrónico">
+            <input id="telefono" type="text" name="telefonoCandidato" placeholder="Numero de teléfono">
+            <input id="cedula" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="cedulaCandidato" placeholder="Cédula de identidad">
+          </fieldset>
+        </form>
+      </div>
+      <!--Contiene el formulario de la derecha. Informacion de la mascota -->
+      <div class="derecha">
+        <form>
+          <fieldset>
+            <legend><span class="number">2</span> Información de la mascota </legend>
+            <input id="nombreM" type="text" name= "nombreMascota" placeholder="Nombre">
+            <input id="edadA" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="edadAnos" placeholder="Edad aproximada en años">
+            <input id="edadM" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="edadMeses" placeholder="Número de meses transcurridos luego del último cumpleaños">
+            <select id="adoptada" name="adoptada">
+              <option>Mi mascota es adoptada</option>
+              <option>Mi mascota no es adoptada</option>
+            </select>
+            <input id="donde" type="text" name="origen" placeholder="Lugar donde fue recogida">
+            <!--Para escoger si es adoptado o no-->
+            
+            <textarea id="historia" rows="7" name="historia" placeholder="Historia entretenida con tu mascota (max: 400 caracteres)" maxlength="400"></textarea>
+          </fieldset>
 
+        </form>
+      </div>
+      <button id="prueba" >prueba</button>
+    </div>
+
+    <!--Para utilizar los script en appPart.js -->
+    <script src="appPart.js"></script>
   </body>
 </html>
