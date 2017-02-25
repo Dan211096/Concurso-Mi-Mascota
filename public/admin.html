@@ -87,8 +87,29 @@
             var nombre=hijo.child("Nombre").val();
             var apellido=hijo.child("Apellido").val();
             var telefono=hijo.child("Telefono").val();
+            var correo=hijo.child("Correo").val();
+            var mascota=hijo.child("Mascota").child("Nombre").val();
+            var edadA=hijo.child("Mascota").child("EdadA").val();
+            var edadM=hijo.child("Mascota").child("EdadM").val();
 
-          var nuevaFila = $('<tr><td><p>'+estado+'</p></td><td><p>'+nombre+'</p></td><td><p>'+apellido+'</p></td><td><p>'+telefono+'</p></td></tr>'+);
+            var adoptada;
+            var donde;
+
+            if(hijo.child("Mascota").child("Adoptada").val()){
+              adoptada="Si";
+              donde=hijo.child("Mascota").child("Donde").val();
+            }else{
+              adoptada="No";
+              donde="No aplica";
+            }
+            var foto1=hijo.child("Mascota").child("Fotos").child("Foto1").val();
+            var foto2=hijo.child("Mascota").child("Fotos").child("Foto1").val();
+            var foto3=hijo.child("Mascota").child("Fotos").child("Foto1").val();
+            var historia=hijo.child("Mascota").child("Historia").val();
+
+            var refFoto1=firebase.storage().ref('fotos_concurso/' + foto1).getDownloadURL();
+
+          var nuevaFila = $('<tr><td><p>'+estado+'</p></td><td><p>'+nombre+'</p></td><td><p>'+apellido+'</p></td><td><p>'+telefono+'</p></td><td><p>'+correo+'</p></td><td><p>'+mascota+'</p></td><td><p>'+edadA+'</p></td><td><p>'+edadM+'</p></td><td><p>'+adoptada+'</p></td><td><p>'+donde+'</p></td><td><a href="'+refFoto1+'">'+foto1+'</a></td><td><p>'+foto2+'</p></td><td><p>'+foto3+'</p></td><td><p>'+historia+'</p></td></tr>');
           $("#tabla").append(nuevaFila);
 
         });
