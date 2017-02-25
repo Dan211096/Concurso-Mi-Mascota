@@ -44,12 +44,17 @@
     </header>
 
     <h4>Las entradas al concurso son:</h4>
-
+    <div hidden id="raz">
+      <input type="text" placeholder="Razon de la modificacion" id="razon">
+      <input hidden id="ced">
+      <button id="aceptar" onclick=modificar() >Aceptar</button>
+    </div>
     <table id="tabla">
       <tr>
         <th>Estado</th>
         <th>Nombre</th>
         <th>Apellido</th>
+        <th>Cedula</th>
         <th>Telefono</th>
         <th>Correo</th>
         <th>Mascota</th>
@@ -62,13 +67,8 @@
         <th>Foto 3</th>
         <th>Historia</th>
 
-
-
-
       </tr>
       
-
-
 
 
   </div>
@@ -91,7 +91,7 @@
             var mascota=hijo.child("Mascota").child("Nombre").val();
             var edadA=hijo.child("Mascota").child("EdadA").val();
             var edadM=hijo.child("Mascota").child("EdadM").val();
-
+            var cedula=hijo.key;
             var adoptada;
             var donde;
 
@@ -103,19 +103,53 @@
               donde="No aplica";
             }
             var foto1=hijo.child("Mascota").child("Fotos").child("Foto1").val();
-            var foto2=hijo.child("Mascota").child("Fotos").child("Foto1").val();
-            var foto3=hijo.child("Mascota").child("Fotos").child("Foto1").val();
+            var foto2=hijo.child("Mascota").child("Fotos").child("Foto2").val();
+            var foto3=hijo.child("Mascota").child("Fotos").child("Foto3").val();
             var historia=hijo.child("Mascota").child("Historia").val();
 
-            var refFoto1=firebase.storage().ref('fotos_concurso/' + foto1).getDownloadURL();
+            
+            var refFoto1=firebase.storage().ref('fotos_concurso/' + foto1).getDownloadURL().then(function(url1){
+                var refFoto1=firebase.storage().ref('fotos_concurso/' + foto2).getDownloadURL().then(function(url2){
+                  var refFoto1=firebase.storage().ref('fotos_concurso/' + foto3).getDownloadURL().then(function(url3){
+                    var nuevaFila = $('<tr><td><p>'+estado+'</p></td><td><p>'+nombre+'</p></td><td><p>'+apellido+'</p></td><td><p>'+cedula+'</p></td><td><p>'+telefono+'</p></td><td><p>'+correo+'</p></td><td><p>'+mascota+'</p></td><td><p>'+edadA+'</p></td><td><p>'+edadM+'</p></td><td><p>'+adoptada+'</p></td><td><p>'+donde+'</p></td><td><a href="'+url1+'">'+foto1+'</a></td><td><a href="'+url2+'">'+foto2+'</a></td><td><a href="'+url3+'">'+foto3+'</a></td><td><p>'+historia+'</p></td><td><p><button onclick=aprobar('+cedula+')>Aprobar</button></p></td></p></td><td><p><button onclick=rechazar('+cedula+')>Rechazar</button></p></td></p></td><td><p><button onclick=mod('+cedula+')>Modificar</button></p></td></tr>');
+                    $("#tabla").append(nuevaFila);
+                  });
+              });
+              
+            });
+       
 
-          var nuevaFila = $('<tr><td><p>'+estado+'</p></td><td><p>'+nombre+'</p></td><td><p>'+apellido+'</p></td><td><p>'+telefono+'</p></td><td><p>'+correo+'</p></td><td><p>'+mascota+'</p></td><td><p>'+edadA+'</p></td><td><p>'+edadM+'</p></td><td><p>'+adoptada+'</p></td><td><p>'+donde+'</p></td><td><a href="'+refFoto1+'">'+foto1+'</a></td><td><p>'+foto2+'</p></td><td><p>'+foto3+'</p></td><td><p>'+historia+'</p></td></tr>');
-          $("#tabla").append(nuevaFila);
+          
 
         });
 
 
       });
+    function aprobar(cedula){
+        firebase.database().ref('Entrada/'+cedula+'/Estatus').set("Aprobada");
+      };
+
+      function mod(cedula){
+        document.getElementById('raz').removeAttribute('hidden');
+        document.getElementById('ced').value=cedula;
+      }
+      function modificar(){  
+        var cedula =document.getElementById('ced');
+        var razon =document.getElementById('razon');  
+        if (razon.value != null) {
+           firebase.database().ref('Entrada/'+cedula.value+'/Razon').set(razon.value);
+        }
+        firebase.database().ref('Entrada/'+cedula.value+'/Estatus').set("Modificar");
+        razon.value="";
+        document.getElementById('raz').setAttribute('hidden', 'true');
+      };
+        function rechazar(cedula){
+        firebase.database().ref('Entrada/'+cedula+'/Estatus').set("Rechazada");
+      };
+      
+
+      
+
 
     </script>
 
