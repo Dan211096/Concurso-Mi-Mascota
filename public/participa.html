@@ -5,6 +5,7 @@
     <script  src="http://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <!-- Para que el campo donde se indica el lugar donde se adopta la mascota sea visible solo en ese caso-->
     <script>
+    //funcoin para mostrar el campo de donde lo adopto si es el caso
       function aparecer() {
         var selectBox = document.getElementById("seleccion");
         var selected = selectBox.options[selectBox.selectedIndex].value;
@@ -93,6 +94,7 @@
         </forms>
 
     </div>
+    <!-- mensaje de agradecimiento-->
     <div hidden id="gracias"> 
          <h4> Hemos recibido su solicitud para entrar al concurso. ¡Gracias por participar! </h4>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../index.html'"> Inicio </button>

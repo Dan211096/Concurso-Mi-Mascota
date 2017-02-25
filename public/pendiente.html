@@ -44,24 +44,23 @@
     </header>
 
     <div> 
-      <!--Botones para pasar a las otras vistas -->
+    <!--botones para pasar a las otras vistas-->
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../admin.html'"> Ver Todas </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../aprobada.html'"> Ver Aprobadas </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../rechazada.html'"> Ver Rechazadas </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../modificar.html'"> Ver Modificar </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../pendiente.html'"> Ver Pendientes </button>
+        
     </div>
 
     <h4>Las entradas al concurso son:</h4>
-    <!--area donde  se muestra la historia de la mascota -->
+    <!--campo para mostrar la historia de la mascota -->
     <textarea id="historia" placeholder="Para ver la historia, presione el boton correspondiente" disabled="true"></textarea>
-
     <!-- campo que aparece si se quiere establecer como estatus de la entrada como modificar para establecer la razon-->
     <div hidden id="raz">
       <input type="text" placeholder="Razon de la modificacion" id="razon">
       <input hidden id="ced">
       <button id="aceptar" onclick=modificar() >Aceptar</button>
     </div>
-
     <!--tabla que muestra todas las etradas del concurso -->
     <table id="tabla">
       <tr>
@@ -82,10 +81,10 @@
         <th>Historia</th>
 
       </tr>
-  <!--campos auxiliares para almacenar las url de las fotos. Se trato de hacerlo sin estos pero los valores no se retornaban -->    
-<input hidden type="text" id="urlfoto1">
-<input hidden type="text" id="urlfoto2">
-<input hidden type="text" id="urlfoto3">
+      <!--campos auxiliares para almacenar las url de las fotos. Se trato de hacerlo sin estos pero los valores no se retornaban -->  
+    <input hidden type="text" id="urlfoto1">
+    <input hidden type="text" id="urlfoto2">
+    <input hidden type="text" id="urlfoto3">
   </div>
 
    
@@ -96,8 +95,7 @@
     <script>
       var ref = firebase.database().ref('/Entrada');
       var tabla= $("#tabla").val();
-      //toma todas las entradas    
-      ref.once('value', snap=>{
+      ref.orderByChild("Estatus").equalTo("Pendiente").once('value', snap=>{//toma todas las entradas    
         snap.forEach(hijo=>{ //crea una fila por entrada
             //tomo los valores
             var estado=hijo.child("Estatus").val();
@@ -124,7 +122,7 @@
             var foto3=hijo.child("Mascota").child("Fotos").child("Foto3").val();
             var historia=hijo.child("Mascota").child("Historia").val();
 
-            //busco los valores de la url para descargar las fotos
+             //busco los valores de la url para descargar las fotos
             var refFoto1=firebase.storage().ref('fotos_concurso/' + foto1).getDownloadURL().then(function(url1){
                 urlfoto1.value=url1
             }).catch(function(error) {
@@ -133,6 +131,7 @@
                 // File doesn't exist
                 break;
 
+             
             }});
 
             var refFoto1=firebase.storage().ref('fotos_concurso/' + foto2).getDownloadURL().then(function(url2){
@@ -143,11 +142,12 @@
                 // File doesn't exist
                 break;
 
+              
             }});
 
-
+            
             var refFoto1=firebase.storage().ref('fotos_concurso/' + foto3).getDownloadURL().then(function(url3){
-              //se crea la nueva fila, con todos los datos y botones necesarios
+               //se crea la nueva fila, con todos los datos y botones necesarios
               var nuevaFila = $('<tr><td><p>'+estado+'</p></td><td><p>'+nombre+'</p></td><td><p>'+apellido+'</p></td><td><p>'+cedula+'</p></td><td><p>'+telefono+'</p></td><td><p>'+correo+'</p></td><td><p>'+mascota+'</p></td><td><p>'+edadA+'</p></td><td><p>'+edadM+'</p></td><td><p>'+adoptada+'</p></td><td><p>'+donde+'</p></td><td><a href="'+urlfoto1.value+'">'+foto1+'</a></td><td><a href="'+urlfoto2.value+'">'+foto2+'</a></td><td><a href="'+url3+'">'+foto3+'</a></td><td><button onclick=hist("'+historia+'")>ver</button></td><td><button onclick=aprobar('+cedula+')>Aprobar</button></td></td><td><button onclick=rechazar('+cedula+')>Rechazar</button></td></td><td><button onclick=mod('+cedula+')>Modificar</button></td></tr>');
               $("#tabla").append(nuevaFila);
             }).catch(function(error) {
@@ -156,8 +156,9 @@
                 // File doesn't exist
                 break;
 
+              
             }});
-
+              
         });
 
 
@@ -165,14 +166,14 @@
       //funcion para cambiar el estatus a aprobada
       function aprobar(cedula){
         firebase.database().ref('Entrada/'+cedula+'/Estatus').set("Aprobada");
-        firebase.database().ref('Entrada/'+cedula.value+'/Razon').set(null);
+         firebase.database().ref('Entrada/'+cedula.value+'/Razon').set(null);
       };
       //funcion para habilitar el campo para decir la razon de la peticion de modificacion
       function mod(cedula){
         document.getElementById('raz').removeAttribute('hidden');
         document.getElementById('ced').value=cedula;
       }
-      //funcion para cambiar el estatus a modificar y establecer la razon
+       //funcion para cambiar el estatus a modificar y establecer la razon
       function modificar(){  
         var cedula =document.getElementById('ced');
         var razon =document.getElementById('razon');  
@@ -192,10 +193,6 @@
       function hist(hist){
         historia.value=hist;
       }
-      
-
-      
-
 
     </script>
 

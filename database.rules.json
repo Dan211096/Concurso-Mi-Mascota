@@ -1,6 +1,12 @@
 {
-  "rules": {
-    ".read": "auth != null",
-    ".write": true
+  "rules": {	
+	  	"Entrada": {
+	  		".read": "auth != null",	
+		    ".write": false,
+		    "$uid":{
+		    	".read": "auth != null",
+		    	".write": "data.exists()?data.child('meta').child('editable').val() ==true || auth!=null : true"
+	  	}
+  	}
   }
 }

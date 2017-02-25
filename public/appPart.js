@@ -45,7 +45,7 @@
 	  	var text2=document.getElementById('foto2');
 
 	
-
+	  	//funcion para montar en la bdd. verifico si los campos estan llenos, si lo estan, mando la inf
 		envio.addEventListener('click', e=>{
 	  		
 
@@ -90,6 +90,7 @@
 		  			adoptE='False';
 		  			enDonde=null;
 		  		}
+		  		//creo el json para ser enviado
 		  		var entrada={
 						'Apellido':apellidoC.value,
 						'Correo':correo.value,
@@ -110,8 +111,10 @@
 			  			'Nombre':nombreC.value,
 			  			'Telefono':telefono.value
 		  			};
-		  		console.log(entrada);
+		  		//console.log(entrada);
+		  		//monto en la bdd
 		  		firebase.database().ref('Entrada/'+ced).set(entrada);
+		  		//muestro un mensaje de agradecimiento
 		  		const formul =document.getElementById('formul');
 		  		formul.setAttribute('hidden', 'true');
 		  		const gracias=document.getElementById('gracias');
