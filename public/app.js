@@ -65,6 +65,7 @@
 		  		txtEmail.value='';
 		  		txtEmail.setAttribute('hidden', 'true');
 		  		//se redirige a la pagina de admin si inicio sesion';
+		  		window.location.href='../admin.html'
 		  	} else{
 		  		//se muestra un mensaje para preubas
 		  		console.log('not logged in');

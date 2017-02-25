@@ -13,10 +13,12 @@
     <!--Estilizacion-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" >
     <link rel="stylesheet" href="main.css">
+
+        
   </head>
+ 
 
-
-  <body class="mdl-body mld-js-body mdl-color--green-300" style="text-align: center">
+  <body class="mdl-body mld-js-body mdl-color--green-300">
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <!--Seccion del encabezado de la pagina-->
     <header class="mdl-layout__header mdl-color-text--white mdl-color--green-700">
@@ -40,12 +42,61 @@
         </div>
       
     </header>
-    <p> a</p>
+
+    <h4>Las entradas al concurso son:</h4>
+
+    <table id="tabla">
+      <tr>
+        <th>Estado</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Mascota</th>
+        <th>Años</th>
+        <th>Meses</th>
+        <th>Adoptada</th>
+        <th>En </th>
+        <th>Foto 1</th>
+        <th>Foto 2</th>
+        <th>Foto 3</th>
+        <th>Historia</th>
+
+
+
+
+      </tr>
+      
+
+
+
+
   </div>
 
    
-    <!--para aplicar los scripts que estan en appAdmin.js-->
+<!--para aplicar los scripts que estan en appAdmin.js-->
    <script src="appAdmin.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      var ref = firebase.database().ref().child('Entrada');
+      var tabla= $("#tabla").val();
+      ref.once('value', snap=>{
+        snap.forEach(hijo=>{
+            var estado=hijo.child("Estatus").val();
+            var nombre=hijo.child("Nombre").val();
+            var apellido=hijo.child("Apellido").val();
+            var telefono=hijo.child("Telefono").val();
+
+          var nuevaFila = $('<tr><td><p>'+estado+'</p></td><td><p>'+nombre+'</p></td><td><p>'+apellido+'</p></td><td><p>'+telefono+'</p></td></tr>'+);
+          $("#tabla").append(nuevaFila);
+
+        });
+
+
+      });
+
+    </script>
 
   </body>
 </html>

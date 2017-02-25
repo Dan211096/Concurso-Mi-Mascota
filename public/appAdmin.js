@@ -81,4 +81,23 @@
 		  	}
 	    });
 
+	    //para sincronizar la lista con la bdd
+	  /*  const list=document.getElementById('lista');
+	    const dbRefList=firebase.database().ref().child('Entrada');
+
+	    dbRefList.on('child_added', snap =>{
+	    	const li=document.createElement('li');
+	    	var texto= "Nombre: "+snap.val().Nombre +" Apellido: "+snap.val().Apellido+" Telefono: "+ snap.val().Telefono+" Correo: "+snap.val().Correo+" Cedula: "+snap.key+" Mascota: "+snap.val().Mascota.Nombre;
+	    	texto=texto+ " Años: "+snap.val().Mascota.EdadA+ " Meses: "+ snap.val().Mascota.EdadM;
+	    	if (snap.val().Mascota.Adoptada){
+	    		texto=texto+ " Adoptada: si En: "+snap.val().Mascota.Donde;
+	    	}else{
+	    		texto=texto+" Adoptada: no";
+	    	}
+	    	texto=texto+" Historia: "+ snap.val().Mascota.Historia+ " Estado: "+snap.val().Estatus;
+
+	    	li.innerText =texto; //JSON.stringify(snap.val ());
+	    	list.appendChild(li);
+	    })*/
+
 }());

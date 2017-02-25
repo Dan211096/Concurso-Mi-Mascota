@@ -3,6 +3,21 @@
   <head>
     <!--script para el funcionamiento de firebase -->
     <script  src="http://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <!-- Para que el campo donde se indica el lugar donde se adopta la mascota sea visible solo en ese caso-->
+    <script>
+      function aparecer() {
+        var selectBox = document.getElementById("seleccion");
+        var selected = selectBox.options[selectBox.selectedIndex].value;
+        var campoOculto = document.getElementById("opcional");
+        if(selected === '1'){
+          campoOculto.style.display="inline";
+        }
+        else{
+          campoOculto.style.display="none";
+        }
+      };
+      </script>
+
     <title>Concurso Mi Mascota. Participa</title>
     <!--Material Design Lite-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -29,42 +44,62 @@
     </header>
     
     <!--Una division que contendra los formularios para ingresar datos -->
-    <div class="formulario">
-      <!--division que contiene el formulario de la izquierda. Informacion del dueño-->
+    <div id="formul" class="formulario">
+        <forms >
+              <!--division que contiene el formulario de la izquierda. Informacion del dueño-->
       <div class="izquierda">
-        <form>
+
           <fieldset>
             <legend><span class="number">1</span> Información del participante</legend>
-            <input id="nombreC" type="text" name="nombreCandidato" placeholder="Nombre">
-            <input id="apellidoC" type="text" name="apellidoCandidato" placeholder="Apellido">
-            <input id="correo" type="email" name="correoCandidato" placeholder="Correo electrónico">
-            <input id="telefono" type="text" name="telefonoCandidato" placeholder="Numero de teléfono">
-            <input id="cedula" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="cedulaCandidato" placeholder="Cédula de identidad">
+            <input id="nombreC" type="text" required="required" name="nombreCandidato" placeholder="Nombre">
+            <input id="apellidoC" type="text" required="required"  name="apellidoCandidato" placeholder="Apellido">
+            <input id="correo" type="email" required="required"  name="correoCandidato" placeholder="Correo electrónico">
+            <input id="telefono" type="text" required="required"  name="telefonoCandidato" placeholder="Numero de teléfono">
+            <input id="cedula" type="text" required="required"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="cedulaCandidato" placeholder="Cédula de identidad">
           </fieldset>
-        </form>
+          <div class="cargarImagen">
+              <input type="file" value="upload" required="required" name="file" class="inputing" id="subirArchivo"> 
+              <input type="file" value="upload" required="required" name="file1" class="inputing" id="subirArchivo1">
+              <input type="file" value="upload" required="required" name="file2" class="inputing" id="subirArchivo2">
+          </div>
+  
       </div>
       <!--Contiene el formulario de la derecha. Informacion de la mascota -->
       <div class="derecha">
-        <form>
+
           <fieldset>
             <legend><span class="number">2</span> Información de la mascota </legend>
-            <input id="nombreM" type="text" name= "nombreMascota" placeholder="Nombre">
-            <input id="edadA" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="edadAnos" placeholder="Edad aproximada en años">
-            <input id="edadM" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="edadMeses" placeholder="Número de meses transcurridos luego del último cumpleaños">
-            <select id="adoptada" name="adoptada">
-              <option>Mi mascota es adoptada</option>
-              <option>Mi mascota no es adoptada</option>
+            <input id="nombreM" type="text" required="required"  name= "nombreMascota" placeholder="Nombre">
+            <input id="edadA" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  required="required"  name="edadAnos" placeholder="Edad aproximada en años">
+            <input id="edadM" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  required="required"  name="edadMeses" placeholder="Número de meses transcurridos luego del último cumpleaños">
+            <select id="seleccion" name="adoptada" required="required" onchange="aparecer()" >
+              <option value="1">Mi mascota es adoptada</option>
+              <option value="0">Mi mascota no es adoptada</option>
             </select>
-            <input id="donde" type="text" name="origen" placeholder="Lugar donde fue recogida">
+
+            <div id="opcional">
+            <input id="donde" type="text"  required="required"  name="origen"  placeholder="Lugar donde fue recogida">
             <!--Para escoger si es adoptado o no-->
-            
-            <textarea id="historia" rows="7" name="historia" placeholder="Historia entretenida con tu mascota (max: 400 caracteres)" maxlength="400"></textarea>
+            </div>
+
+            <textarea id="historia" rows="7"  required="required"  name="historia" placeholder="Historia entretenida con tu mascota (max: 400 caracteres)" maxlength="400"></textarea>
           </fieldset>
 
-        </form>
       </div>
-      <button id="prueba" >prueba</button>
+        <textarea hidden id="foto"></textarea>
+        <textarea hidden id="foto1"></textarea>
+        <textarea hidden id="foto2"></textarea>
+        <input id='envio' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Enviar" />
+        </forms>
+
     </div>
+    <div hidden id="gracias"> 
+         <h4> Hemos recibido su solicitud para entrar al concurso. ¡Gracias por participar! </h4>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.location.href='../index.html'"> Inicio </button>
+    </div>
+    </div>
+
+    
 
     <!--Para utilizar los script en appPart.js -->
     <script src="appPart.js"></script>
